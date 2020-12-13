@@ -1,15 +1,29 @@
+import React from "react";
+import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
+
+  let apiKey= "c2f91e6b37378ad6a4cd35f075bf9120";
+  let apiUrl= `https://api.openweathermap.org/data/2.5/weather?q=Denver&appid=${apiKey}`
+  axios.get(apiUrl).then(handleResponse);
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+  function updateCity(event) {
+    alert(event.target.value);
+  }
+
   return (
     <div className="App">
-      <form><div className="row">
+      <form onSubmit={handleSubmit}><div className="row">
           <div className="col-md-9">
             <input
               type="text"
               className="form-control"
               placeholder="Enter a City"
+              onChange={updateCity}
             />{" "}
           </div>
           <div className="col-md-3">
@@ -39,7 +53,7 @@ function App() {
       </ul>
       <small className="github-link">
         <a
-          href="https://github.com/monica88green/my-weather-app"
+          href="https://github.com/monica88green/react-weather"
           target="_blank"
           rel="noreferrer"
         >
