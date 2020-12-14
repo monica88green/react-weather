@@ -6,6 +6,7 @@ import './App.css';
 function App() {
   const [city, setCity] = useState('null');
   const [temperature, setTemperature] = useState('null');
+  const [description, setDescription] = useState('null');
   const [humidity, setHumidity] = useState('null');
   const [windspeed, setWindspeed] = useState('null');
   const [loaded, setLoaded] = useState(false);
@@ -13,6 +14,7 @@ function App() {
   function showTemperature(response) {
     setLoaded(true);
     setTemperature(response.data.main.temp);
+    setDescription(response.data.weather[0].description);
     setHumidity(response.data.main.humidity);
     setWindspeed(response.data.wind.speed);
     }
@@ -58,13 +60,13 @@ function App() {
           Currently: {Math.round(temperature)} °C | °F
         </li>
         <li>
-          Sunny
+          {description}
         </li>
         <li>
           Humidity: {humidity}%
         </li>
         <li>
-          Windspeed: {windspeed} km/h
+          Windspeed: {Math.round(windspeed)} km/h
         </li>
       </ul>
       <small className="github-link">
