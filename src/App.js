@@ -3,7 +3,7 @@ import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function App() {
+export default function App() {
   const [city, setCity] = useState('null');
   const [temperature, setTemperature] = useState('null');
   const [description, setDescription] = useState('null');
@@ -77,7 +77,7 @@ function App() {
         >
           Open Source Code{" "}
         </a>
-        By Monica Ledesma
+        By <a href="https://www.linkedin.com/in/monica-ledesma-9a1792158/" target="_blank" rel="noreferrer"> Monica Ledesma</a>
       </small>
     </div>
   );
@@ -86,4 +86,4 @@ function App() {
   <h1>Where would you like to go?</h1></div>
 }}
 
-export default App;
+
