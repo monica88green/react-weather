@@ -4,19 +4,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 export default function App() {
+  const [weatherData, setWeatherData] = useState({loaded: false});
   const [city, setCity] = useState('null');
-  const [temperature, setTemperature] = useState('null');
-  const [description, setDescription] = useState('null');
-  const [humidity, setHumidity] = useState('null');
-  const [windspeed, setWindspeed] = useState('null');
-  const [loaded, setLoaded] = useState(false);
+
   
   function showTemperature(response) {
-    setLoaded(true);
-    setTemperature(response.data.main.temp);
-    setDescription(response.data.weather[0].description);
-    setHumidity(response.data.main.humidity);
-    setWindspeed(response.data.wind.speed);
+    setWeatherData({
+      loaded: true,
+      temperature: response.data.main.temp,
+      description: response.data.weather[0].description,
+      humidity: response.data.main.humidity,
+      windspeed: response.data.wind.speed
+
+    })
+
     }
 
   function handleSubmit(event) {
@@ -48,7 +49,7 @@ export default function App() {
         </div>
       </form>
 
-      if (loaded) {
+      if (weatherData.loaded) {
 
   return (
     <div className="App">
@@ -57,16 +58,16 @@ export default function App() {
       <h2>Last Updated: Sunday, 14:29</h2>
       <ul className="weather-conditions">
         <li>
-          Currently: {Math.round(temperature)} °C | °F
+          Currently: {Math.round(weatherData.temperature)} °C | °F
         </li>
         <li>
-          {description}
+          {weatherData.description}
         </li>
         <li>
-          Humidity: {humidity}%
+          Humidity: {weatherData.humidity}%
         </li>
         <li>
-          Windspeed: {Math.round(windspeed)} km/h
+          Windspeed: {Math.round(weatherData.windspeed)} km/h
         </li>
       </ul>
       <small className="github-link">
