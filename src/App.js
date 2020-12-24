@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import FormatDate from "./FormatDate";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import WeatherData from "./WeatherData";
@@ -13,6 +12,7 @@ export default function App() {
   function showTemperature(response) {
     setWeatherData({
       loaded: true,
+      city: response.data.name,
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
@@ -50,10 +50,9 @@ export default function App() {
             />
           </div>
         </div>
+        <WeatherData data={weatherData} />
       </form>
-      <div>
-      <WeatherData data={weatherData} />
-      </div>
+     
 
       if (weatherData.loaded) {
 
