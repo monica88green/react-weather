@@ -3,6 +3,7 @@ import axios from "axios";
 import FormatDate from "./FormatDate";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import WeatherData from "./WeatherData";
 
 export default function App() {
   const [weatherData, setWeatherData] = useState({loaded: false});
@@ -50,28 +51,16 @@ export default function App() {
           </div>
         </div>
       </form>
+      <div>
+      <WeatherData data={weatherData} />
+      </div>
 
       if (weatherData.loaded) {
 
   return (
     <div className="App">
       {form}
-      <h1>{city}</h1>
-      <h2><FormatDate date = {weatherData.date} /></h2>
-      <ul className="weather-conditions">
-        <li>
-          Currently: {Math.round(weatherData.temperature)} °C | °F
-        </li>
-        <li className="text-capitalize">
-          {weatherData.description}
-        </li>
-        <li>
-          Humidity: {weatherData.humidity}%
-        </li>
-        <li>
-          Windspeed: {Math.round(weatherData.windspeed)} km/h
-        </li>
-      </ul>
+     
       <small className="github-link">
         <a
           href="https://github.com/monica88green/react-weather"
