@@ -1,4 +1,5 @@
 import React , { useState } from "react";
+import ForecastPreview from "./ForecastPreview";
 import axios from "axios";
 
 export default function Forecast(props) {
@@ -10,9 +11,14 @@ const [forecast, setForecast] = useState(null);
      setLoaded(true);
   }
 
-  if (loaded) {return (
-    <div className="Forecast">
-      {Math.round(forecast.list[0].main.temp)};
+  if (loaded && props.city === forecast.city.name) {return (
+    <div className="Forecast row">
+       <ForecastPreview data={forecast.list[0]} />
+        <ForecastPreview data={forecast.list[1]} />
+        <ForecastPreview data={forecast.list[2]} />
+        <ForecastPreview data={forecast.list[3]} />
+        <ForecastPreview data={forecast.list[4]} />
+        <rForecastPreview data={forecast.list[5]} />
     </div>
   )}
   else {

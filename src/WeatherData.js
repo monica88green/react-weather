@@ -34,5 +34,5 @@ export default function WeatherData(props) {
         </div>
         </div>
          <Forecast city={props.city}/>
-  </div>)
+  </div>);
 }

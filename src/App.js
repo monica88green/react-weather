@@ -3,7 +3,6 @@ import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import WeatherData from "./WeatherData";
-import Forecast from "./Forecast";
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({loaded: false});
@@ -66,7 +65,6 @@ export default function App(props) {
         </div>
         <WeatherData data={weatherData} />
       </form>
-      <Forecast />
      
       <small className="github-link">
         <a
