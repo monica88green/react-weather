@@ -3,6 +3,7 @@ import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import WeatherData from "./WeatherData";
+import Forecast from "./Forecast";
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({loaded: false});
@@ -14,7 +15,7 @@ export default function App(props) {
     setWeatherData({
       loaded: true,
       city: response.data.name,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
@@ -65,6 +66,7 @@ export default function App(props) {
         </div>
         <WeatherData data={weatherData} />
       </form>
+      <Forecast />
      
       <small className="github-link">
         <a
