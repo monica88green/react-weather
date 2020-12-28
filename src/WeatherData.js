@@ -33,6 +33,6 @@ export default function WeatherData(props) {
         </ul>
         </div>
         </div>
-         <Forecast city={props.city}/>
+         <Forecast city={props.data.city}/>
   </div>);
 }
